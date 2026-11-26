@@ -1,0 +1,207 @@
+/*
+ * Robot Vacuum lesson – shared styles.
+ * Every selector is namespaced under .ai-lesson so nothing leaks into the
+ * host platform when the six lessons are combined.
+ */
+.ai-lesson {
+  --ai-bg: #f3f8ff;
+  --ai-card: #ffffff;
+  --ai-ink: #1d2b4f;
+  --ai-ink-soft: #5a6a8c;
+  --ai-line: #dbe5f5;
+  --ai-primary: #2f7cf6;
+  --ai-primary-dark: #1f5fcc;
+  --ai-accent: #ffb703;
+  --ai-green: #22b573;
+  --ai-red: #ef476f;
+  --ai-purple: #8b5cf6;
+  --ai-cyan: #00c2e0;
+  --ai-floor: #fdf7ea;
+  --ai-dust: #c9ad83;
+  --ai-radius: 22px;
+  --ai-shadow: 0 6px 0 rgba(29, 43, 79, 0.08), 0 14px 30px rgba(29, 43, 79, 0.08);
+  --ai-font-head: 'Baloo 2', 'Nunito', 'Trebuchet MS', system-ui, sans-serif;
+  --ai-font-body: 'Nunito', 'Trebuchet MS', system-ui, sans-serif;
+
+  font-family: var(--ai-font-body);
+  color: var(--ai-ink);
+  background: var(--ai-bg);
+  line-height: 1.5;
+  font-size: 18px;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ai-lesson *,
+.ai-lesson *::before,
+.ai-lesson *::after {
+  box-sizing: border-box;
+}
+
+.ai-lesson h1,
+.ai-lesson h2,
+.ai-lesson h3 {
+  font-family: var(--ai-font-head);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.ai-lesson p { margin: 0; }
+
+.ai-lesson svg { display: block; }
+
+/* ---------- Buttons ---------- */
+.ai-lesson .ai-btn {
+  appearance: none;
+  border: 0;
+  font: inherit;
+  font-family: var(--ai-font-head);
+  font-weight: 700;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ai-ink);
+  background: #fff;
+  box-shadow: inset 0 0 0 2px var(--ai-line), 0 4px 0 var(--ai-line);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.ai-lesson .ai-btn:hover { transform: translateY(-2px); }
+.ai-lesson .ai-btn:active { transform: translateY(2px); box-shadow: inset 0 0 0 2px var(--ai-line), 0 1px 0 var(--ai-line); }
+.ai-lesson .ai-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.ai-lesson .ai-btn:focus-visible { outline: 3px solid var(--ai-accent); outline-offset: 3px; }
+
+.ai-lesson .ai-btn--primary {
+  background: var(--ai-primary);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--ai-primary-dark);
+}
+.ai-lesson .ai-btn--primary:active { box-shadow: 0 1px 0 var(--ai-primary-dark); }
+
+.ai-lesson .ai-btn--accent {
+  background: var(--ai-accent);
+  color: #3b2a00;
+  box-shadow: 0 4px 0 #d99a00;
+}
+.ai-lesson .ai-btn--accent:active { box-shadow: 0 1px 0 #d99a00; }
+
+.ai-lesson .ai-btn--green {
+  background: var(--ai-green);
+  color: #fff;
+  box-shadow: 0 4px 0 #17895a;
+}
+
+.ai-lesson .ai-btn--big { font-size: 22px; padding: 14px 30px; }
+.ai-lesson .ai-btn--small { font-size: 15px; padding: 6px 14px; }
+
+.ai-lesson .ai-btn.is-on {
+  background: #e7f0ff;
+  box-shadow: inset 0 0 0 3px var(--ai-primary), 0 4px 0 var(--ai-primary-dark);
+}
+
+/* ---------- Cards & layout ---------- */
+.ai-lesson .ai-card {
+  background: var(--ai-card);
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+  padding: 20px;
+}
+
+.ai-lesson .ai-scene {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ai-lesson .ai-scene__head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ai-lesson .ai-scene__head h2 { font-size: clamp(28px, 4vw, 40px); }
+.ai-lesson .ai-scene__head p { color: var(--ai-ink-soft); font-size: 19px; max-width: 760px; }
+
+.ai-lesson .ai-tag {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #e7f0ff;
+  color: var(--ai-primary-dark);
+}
+
+.ai-lesson .ai-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+.ai-lesson .ai-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 820px) {
+  .ai-lesson .ai-split { grid-template-columns: 1fr; }
+}
+
+/* ---------- Speech bubble ---------- */
+.ai-lesson .ai-bubble {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  padding: 14px 18px;
+  box-shadow: var(--ai-shadow);
+  font-size: 19px;
+}
+
+/* ---------- Meter ---------- */
+.ai-lesson .ai-meter {
+  height: 16px;
+  border-radius: 999px;
+  background: #e8eef8;
+  overflow: hidden;
+}
+.ai-lesson .ai-meter__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--ai-green);
+  transition: width 0.25s ease;
+}
+
+/* ---------- Tip / fact box ---------- */
+.ai-lesson .ai-fact {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: #fff8e1;
+  border: 2px dashed #ffd666;
+  border-radius: 18px;
+  padding: 14px 16px;
+}
+.ai-lesson .ai-fact__icon { font-size: 28px; line-height: 1; }
+
+/* ---------- Scene transition ---------- */
+.ai-lesson .ai-slide-enter-active,
+.ai-lesson .ai-slide-leave-active { transition: opacity 0.25s ease, transform 0.25s ease; }
+.ai-lesson .ai-slide-enter-from { opacity: 0; transform: translateX(30px); }
+.ai-lesson .ai-slide-leave-to { opacity: 0; transform: translateX(-30px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-lesson *,
+  .ai-lesson *::before,
+  .ai-lesson *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

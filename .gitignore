@@ -1,0 +1,14 @@
+# dependencies and build output
+node_modules
+dist
+
+# colleagues' original lessons (not used by the platform)
+other lessons/
+*.zip
+
+# local / editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

@@ -1,0 +1,105 @@
+/*
+ * Lesson 3 style bridge: the original Beauty Cameras components use their own variables and
+ * global classes (.btn, .chip, .sticker…). Inside `.bc` they are mapped onto the platform design
+ * (shared/theme.css), so the components keep working unchanged but look like the other lessons.
+ */
+.ai-lesson .bc {
+  --sky: #eef5ff;
+  --sky-deep: #dbe9ff;
+  --card: #fff;
+  --ink: var(--ai-ink);
+  --muted: var(--ai-ink-soft);
+  --line: var(--ai-line);
+  --line-strong: #c3d0e6;
+
+  --pink: #ff5c8a;
+  --pink-soft: #ffe8ef;
+  --yellow: #ffd166;
+  --yellow-soft: #fff4d6;
+  --purple: var(--ai-purple);
+  --purple-soft: #f1ecff;
+  --green: var(--ai-green);
+  --green-soft: #e3f8ee;
+  --orange: #ff8a3d;
+  --red: var(--ai-red);
+  --red-soft: #ffe6ec;
+
+  --outline: 2px solid var(--ai-line);
+  --pop: var(--ai-shadow);
+  --pop-small: 0 4px 0 var(--ai-line);
+  --radius: 18px;
+  --radius-lg: var(--ai-radius);
+
+  --font-fun: var(--ai-font-head);
+  --font-body: var(--ai-font-body);
+  font-size: 17px;
+}
+
+/* zero-specificity resets, so platform classes like .ai-btn still win */
+:where(.ai-lesson .bc) :where(button, input) { font: inherit; color: inherit; }
+:where(.ai-lesson .bc) :where(button) { cursor: pointer; }
+.ai-lesson .bc button:focus-visible,
+.ai-lesson .bc input:focus-visible { outline: 3px solid var(--ai-accent); outline-offset: 3px; }
+
+/* ---------- original building blocks, in platform style ---------- */
+.ai-lesson .bc .sticker {
+  background: #fff;
+  border: 0;
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+}
+
+.ai-lesson .bc .btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ai-ink);
+  box-shadow: inset 0 0 0 2px var(--ai-line), 0 4px 0 var(--ai-line);
+  font-family: var(--ai-font-head);
+  font-size: 18px;
+  font-weight: 700;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s;
+}
+.ai-lesson .bc .btn:hover:not(:disabled) { transform: translateY(-2px); }
+.ai-lesson .bc .btn:active:not(:disabled) { transform: translateY(2px); }
+.ai-lesson .bc .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.ai-lesson .bc .btn-yellow { background: var(--ai-accent); color: #3b2a00; box-shadow: 0 4px 0 #d99a00; }
+.ai-lesson .bc .btn-green { background: var(--ai-green); color: #fff; box-shadow: 0 4px 0 #17895a; }
+.ai-lesson .bc .btn-pink { background: var(--ai-red); color: #fff; box-shadow: 0 4px 0 #b8264a; }
+.ai-lesson .bc .btn-purple { background: var(--ai-purple); color: #fff; box-shadow: 0 4px 0 #6a3fd6; }
+
+.ai-lesson .bc .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: #f1ecff;
+  color: #6a3fd6;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ai-lesson .bc .activity-title { font-size: clamp(22px, 2.8vw, 28px); margin-bottom: 4px; }
+.ai-lesson .bc .activity-hint { margin: 0 0 14px; color: var(--ai-ink-soft); font-size: 18px; }
+
+/* ---------- animations used by the original components ---------- */
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes pop-in { 0% { transform: scale(0.6); opacity: 0; } 70% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+.ai-lesson .bc .pop-in { animation: pop-in 0.4s ease-out both; }
+.ai-lesson .bc .shake { animation: shake 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-lesson .bc *, .ai-lesson .bc *::before, .ai-lesson .bc *::after { animation: none !important; transition: none !important; }
+}

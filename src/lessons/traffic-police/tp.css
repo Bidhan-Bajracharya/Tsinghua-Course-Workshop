@@ -1,0 +1,40 @@
+/* Shared bits for the Lesson 2 screens (namespaced tp-, on top of shared/theme.css). */
+.ai-lesson .tp-sim {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #9fdc8f;
+  box-shadow: 0 0 0 5px #fff, var(--ai-shadow);
+}
+.ai-lesson .tp-sim canvas { display: block; width: 100%; height: auto; }
+.ai-lesson .tp-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(250px, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .ai-lesson .tp-layout { grid-template-columns: 1fr; }
+}
+.ai-lesson .tp-panel { display: flex; flex-direction: column; gap: 12px; }
+.ai-lesson .tp-panel .ai-btn { width: 100%; }
+.ai-lesson .tp-k { align-self: flex-start; }
+.ai-lesson .tp-k--red { background: #ffe3ea; color: #c0264f; }
+.ai-lesson .tp-k--blue { background: #e7f0ff; color: var(--ai-primary-dark); }
+.ai-lesson .tp-k--orange { background: #ffeedd; color: #c25a12; }
+.ai-lesson .tp-k--purple { background: #efe8ff; color: #6a3fd6; }
+.ai-lesson .tp-k--green { background: #ddf6ea; color: #17895a; }
+.ai-lesson .tp-k--teal { background: #dcf6fa; color: #08798c; }
+.ai-lesson .tp-k--navy { background: var(--ai-ink); color: #fff; }
+.ai-lesson .tp-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ai-lesson .tp-stat {
+  background: #fff; border-radius: 16px; padding: 8px 12px; box-shadow: inset 0 0 0 2px var(--ai-line);
+  display: flex; flex-direction: column;
+}
+.ai-lesson .tp-stat small { font-weight: 800; color: var(--ai-ink-soft); font-size: 13px; }
+.ai-lesson .tp-stat b { font-family: var(--ai-font-head); font-size: 30px; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.ai-lesson .tp-range { width: 100%; accent-color: var(--ai-primary); height: 28px; cursor: pointer; }
+.ai-lesson .tp-msg { font-weight: 800; font-size: 18px; }
+@media (prefers-reduced-motion: reduce) {
+  .ai-lesson .tp-anim { animation: none !important; transition: none !important; }
+}
